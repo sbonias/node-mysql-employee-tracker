@@ -26,14 +26,14 @@ connection.connect(function (err) {
   console.log("connected as id " + connection.threadId);
   // connection.end();
   displayIntro();
-  askQuestion();
+  initialQuestion();
 });
 
 const displayIntro = () => {
   console.table("-----" + "EMPLOYEE TRACKER" + "-----");
 };
 
-const askQuestion = () =>
+const initialQuestion = () =>
   inquirer
     .prompt([
       /* Pass your questions in here */
@@ -98,9 +98,32 @@ const askQuestion = () =>
       }
     });
 
-const viewDept = () => {};
-const viewRole = () => {};
-const viewEmp = () => {};
+const viewDept = () => {
+  connection.query("SELECT * FROM department", function (err, result) {
+    if (err) {
+      throw err;
+    }
+    console.table(result);
+  });
+};
+
+const viewRole = () => {
+  connection.query("SELECT * FROM employee_role", function (err, result) {
+    if (err) {
+      throw err;
+    }
+    console.table(result);
+  });
+};
+const viewEmp = () => {
+  connection.query("SELECT * FROM employee", function (err, result) {
+    if (err) {
+      throw err;
+    }
+    console.table(result);
+  });
+};
+
 const addDept = () => {};
 const addRole = () => {};
 const addEmp = () => {};
