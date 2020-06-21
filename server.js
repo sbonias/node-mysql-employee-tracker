@@ -20,7 +20,7 @@ const connection = mysql.createConnection({
   database: process.env.DB_NAME,
 });
 
-// Initiate MySQL Connection.
+// Initiate MySQL Connection
 connection.connect(function (err) {
   if (err) throw err;
   console.log("connected as id " + connection.threadId);
@@ -69,25 +69,25 @@ const askQuestion = () =>
     .then((answers) => {
       // Use user feedback for... whatever!!
       if (answers.choice.toString() === "View Departments") {
-        TBD();
+        viewDept();
       }
       if (answers.choice.toString() === "View Roles") {
-        TBD();
+        viewRole();
       }
       if (answers.choice.toString() === "View Employees") {
-        TBD();
+        viewEmp();
       }
       if (answers.choice.toString() === "Add Department") {
-        TBD();
+        addDept();
       }
       if (answers.choice.toString() === "Add Role") {
-        TBD();
+        addRole();
       }
       if (answers.choice.toString() === "Add Employee") {
-        TBD();
+        addEmp();
       }
       if (answers.choice.toString() === "Update Employee Role") {
-        TBD();
+        updateEmpRole();
       }
     })
     .catch((error) => {
@@ -97,3 +97,11 @@ const askQuestion = () =>
         // Something else when wrong
       }
     });
+
+const viewDept = () => {};
+const viewRole = () => {};
+const viewEmp = () => {};
+const addDept = () => {};
+const addRole = () => {};
+const addEmp = () => {};
+const updateEmpRole = () => {};
