@@ -1,4 +1,4 @@
-// Dependencies
+// Dependenciess
 require("dotenv").config();
 const mysql = require("mysql");
 const cTable = require("console.table");
@@ -52,6 +52,9 @@ const initialQuestion = () =>
             name: "View Employees",
           },
           {
+            name: "View All Employee Data",
+          },
+          {
             name: "Add Department",
           },
           {
@@ -76,6 +79,9 @@ const initialQuestion = () =>
       }
       if (answers.choice.toString() === "View Employees") {
         viewEmp();
+      }
+      if (answers.choice.toString() === "View All Employee Data") {
+        viewAllEmpData();
       }
       if (answers.choice.toString() === "Add Department") {
         addDept();
@@ -123,6 +129,19 @@ const viewEmp = () => {
     }
     console.table(result);
   });
+};
+// https://javarevisited.blogspot.com/2012/11/how-to-join-three-tables-in-sql-query-mysql-sqlserver.html
+// had to use an "on clause"
+const viewAllEmpData = () => {
+  connection.query(
+    "SELECT e.first_name,e.last_name,d.department,r.emp_title,r.emp_salary FROM employee e JOIN employee_role r ON r.id = e.role_id JOIN department d ON d.id = r.department_id",
+    function (err, result) {
+      if (err) {
+        throw err;
+      }
+      console.table(result);
+    }
+  );
 };
 
 const addDept = () => {
