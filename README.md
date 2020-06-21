@@ -5,8 +5,9 @@
 <!-- Run npm i dotenv --> x
 <!-- Create .gitignore file --> x
 <!-- Create .env file --> x
-<!-- Create schema.sql file -->
-<!-- Create seeds.sql file -->
+<!-- Create schema.sql file --> x
+<!-- Create seeds.sql file --> x
+<!-- Created db directory to house .sql files --> x
 <!-- Create server.js file -->
 
 # Unit 12 MySQL Homework: Employee Tracker
