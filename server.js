@@ -25,4 +25,75 @@ connection.connect(function (err) {
   if (err) throw err;
   console.log("connected as id " + connection.threadId);
   // connection.end();
+  displayIntro();
+  askQuestion();
 });
+
+const displayIntro = () => {
+  console.table("-----" + "EMPLOYEE TRACKER" + "-----");
+};
+
+const askQuestion = () =>
+  inquirer
+    .prompt([
+      /* Pass your questions in here */
+      {
+        type: "checkbox",
+        message: "Select Employee Role",
+        name: "choice",
+        choices: [
+          {
+            name: "View Departments",
+          },
+          {
+            name: "View Roles",
+          },
+          {
+            name: "View Employees",
+          },
+          {
+            name: "Add Department",
+          },
+          {
+            name: "Add Role",
+          },
+          {
+            name: "Add Employee",
+          },
+          {
+            name: "Update Employee Role",
+          },
+        ],
+      },
+    ])
+    .then((answers) => {
+      // Use user feedback for... whatever!!
+      if (answers.choice.toString() === "View Departments") {
+        TBD();
+      }
+      if (answers.choice.toString() === "View Roles") {
+        TBD();
+      }
+      if (answers.choice.toString() === "View Employees") {
+        TBD();
+      }
+      if (answers.choice.toString() === "Add Department") {
+        TBD();
+      }
+      if (answers.choice.toString() === "Add Role") {
+        TBD();
+      }
+      if (answers.choice.toString() === "Add Employee") {
+        TBD();
+      }
+      if (answers.choice.toString() === "Update Employee Role") {
+        TBD();
+      }
+    })
+    .catch((error) => {
+      if (error.isTtyError) {
+        // Prompt couldn't be rendered in the current environment
+      } else {
+        // Something else when wrong
+      }
+    });
