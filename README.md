@@ -9,6 +9,10 @@
 <!-- Create seeds.sql file --> x
 <!-- Created db directory to house .sql files --> x
 <!-- Create server.js file -->
+<!-- work on ensuring connections are working -->
+<!-- work on add department, role, employee feature -->
+<!-- work on view department, role, employee feature -->
+<!-- work on update department, role, employee feature -->
 
 # Unit 12 MySQL Homework: Employee Tracker
 
