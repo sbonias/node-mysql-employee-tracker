@@ -115,6 +115,7 @@ const viewRole = () => {
     console.table(result);
   });
 };
+
 const viewEmp = () => {
   connection.query("SELECT * FROM employee", function (err, result) {
     if (err) {
@@ -124,7 +125,65 @@ const viewEmp = () => {
   });
 };
 
-const addDept = () => {};
-const addRole = () => {};
+const addDept = () => {
+  inquirer
+    .prompt([
+      {
+        name: "item",
+        type: "input",
+        message: "What is the name of the department you would like to add?",
+      },
+    ])
+    .then(function (answer) {
+      // when finished prompting, insert a new item into the db with that info
+      connection.query(
+        "INSERT INTO department SET ?",
+        {
+          department: answer.item,
+        },
+        function (err) {
+          if (err) throw err;
+          console.log("New department added successfully!");
+        }
+      );
+    });
+};
+
+const addRole = () => {
+  inquirer
+    .prompt([
+      {
+        name: "item",
+        type: "input",
+        message: "What is the title of the role you would like to add?",
+      },
+      {
+        name: "salary",
+        type: "input",
+        message: "What starting salary would you like to assign to this role?",
+      },
+      {
+        name: "deptid",
+        type: "input",
+        message: "What is the department id for this role?",
+      },
+    ])
+    .then(function (answer) {
+      // when finished prompting, insert a new item into the db with that info
+      connection.query(
+        "INSERT INTO employee_role SET ?",
+        {
+          emp_title: answer.item,
+          emp_salary: answer.salary,
+          department_id: answer.dept_id,
+        },
+        function (err) {
+          if (err) throw err;
+          console.log("New role added successfully!");
+        }
+      );
+    });
+};
+
 const addEmp = () => {};
 const updateEmpRole = () => {};
