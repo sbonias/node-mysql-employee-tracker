@@ -175,7 +175,7 @@ const addRole = () => {
         {
           emp_title: answer.item,
           emp_salary: answer.salary,
-          department_id: answer.dept_id,
+          department_id: answer.deptid,
         },
         function (err) {
           if (err) throw err;
@@ -185,5 +185,46 @@ const addRole = () => {
     });
 };
 
-const addEmp = () => {};
+const addEmp = () => {
+  inquirer
+    .prompt([
+      {
+        name: "firstName",
+        type: "input",
+        message: "What is the employee's first name?",
+      },
+      {
+        name: "lastName",
+        type: "input",
+        message: "What is the employee's last name?",
+      },
+      {
+        name: "roleId",
+        type: "input",
+        message: "What is the role id for this employee?",
+      },
+      {
+        name: "managerId",
+        type: "input",
+        message: "What is the manager id for this employee?",
+      },
+    ])
+    .then(function (answer) {
+      // when finished prompting, insert a new item into the db with that info
+      connection.query(
+        "INSERT INTO employee SET ?",
+        {
+          first_name: answer.firstName,
+          last_name: answer.lastName,
+          role_id: answer.roleId,
+          manager_id: answer.managerId,
+        },
+        function (err) {
+          if (err) throw err;
+          console.log("New employee added successfully!");
+        }
+      );
+    });
+};
+
 const updateEmpRole = () => {};
