@@ -34,11 +34,11 @@
 
 ## Description
 
-A content management system geared towards allowing the user to view and interact with employee data stored in a mysql database
+A command line content management system geared towards allowing the user to view and interact with employee data stored in a mysql database
 
 ## Deployed Application
 
-- [The URL of the GitHub repository](https://drive.google.com/file/d/1iWSKUtxTX6VH2okF5GXdXJbZK7yKNll4/view)
+- [The URL of the GitHub repository](https://github.com/sbonias/node-mysql-employee-tracker)
 
 ## Challenges
 
