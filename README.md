@@ -47,7 +47,7 @@ A content management system geared towards allowing the user to view and interac
 
 ## Visual Presentation
 
-[A video demonstrating the entirety of the app's functionality ](https://drive.google.com/file/d/1Ymd5r_EFN5AzN7_MFjlMK_2YxSbpDP9Z/view)
+- [A video demonstrating the entirety of the app's functionality ](https://drive.google.com/file/d/1iWSKUtxTX6VH2okF5GXdXJbZK7yKNll4/view)
 
 ## Installation Requirements
 
