@@ -1,4 +1,4 @@
-// Dependenciess
+// Dependencies
 require("dotenv").config();
 const mysql = require("mysql");
 const cTable = require("console.table");
@@ -110,6 +110,7 @@ const viewDept = () => {
       throw err;
     }
     console.table(result);
+    initialQuestion();
   });
 };
 
@@ -119,6 +120,7 @@ const viewRole = () => {
       throw err;
     }
     console.table(result);
+    initialQuestion();
   });
 };
 
@@ -128,8 +130,10 @@ const viewEmp = () => {
       throw err;
     }
     console.table(result);
+    initialQuestion();
   });
 };
+
 // https://javarevisited.blogspot.com/2012/11/how-to-join-three-tables-in-sql-query-mysql-sqlserver.html
 // had to use an "on clause"
 const viewAllEmpData = () => {
@@ -140,6 +144,7 @@ const viewAllEmpData = () => {
         throw err;
       }
       console.table(result);
+      initialQuestion();
     }
   );
 };
@@ -163,6 +168,7 @@ const addDept = () => {
         function (err) {
           if (err) throw err;
           console.log("New department added successfully!");
+          initialQuestion();
         }
       );
     });
@@ -199,6 +205,7 @@ const addRole = () => {
         function (err) {
           if (err) throw err;
           console.log("New role added successfully!");
+          initialQuestion();
         }
       );
     });
@@ -236,14 +243,72 @@ const addEmp = () => {
           first_name: answer.firstName,
           last_name: answer.lastName,
           role_id: answer.roleId,
-          manager_id: answer.managerId,
+          manager_id: answer.managerId || 0,
         },
         function (err) {
           if (err) throw err;
           console.log("New employee added successfully!");
+          initialQuestion();
         }
       );
     });
 };
 
-const updateEmpRole = () => {};
+const updateEmpRole = () => {
+  connection.query("SELECT * FROM employee", function (err, results) {
+    if (err) throw err;
+    // once you have the items, prompt the user for which employee they'd like to alter their role
+    inquirer
+      .prompt([
+        {
+          name: "employeeId",
+          type: "rawlist",
+          choices: function () {
+            var choiceArray = [];
+            for (var i = 0; i < results.length; i++) {
+              choiceArray.push(
+                results[i].id +
+                  " " +
+                  results[i].first_name +
+                  " " +
+                  results[i].last_name
+              );
+            }
+            return choiceArray;
+          },
+          message: "Which employee are you requesting to update?",
+        },
+        {
+          name: "newRole",
+          type: "input",
+          message: "What is this employees new role?",
+        },
+      ])
+      .then(function (answer) {
+        let chosenItem;
+        for (var i = 0; i < results.length; i++) {
+          if (results[i].item_name === answer.choice) {
+            chosenItem = results[i];
+          }
+        }
+        connection.query(
+          "UPDATE employee SET ? WHERE ?",
+          [
+            {
+              role_id: answer.newRole,
+            },
+            {
+              id: chosenItem.id,
+            },
+          ],
+          function (error) {
+            if (error) throw err;
+            console.log("Employee Role Updated Successfully!");
+            initialQuestion();
+          }
+        );
+        // console.log(answer.newRole);
+        // console.log(chosenItem);
+      });
+  });
+};

@@ -10,9 +10,12 @@
 <!-- Created db directory to house .sql files --> x
 <!-- Create server.js file -->
 <!-- work on ensuring connections are working --> x
-<!-- work on add department, role, employee feature -->
+<!-- work on add department, role, employee feature --> x
 <!-- work on view department, role, employee feature --> x
 <!-- work on update department, role, employee feature -->
+<!-- work on return to main screen function -->
+<!-- create video showcasing the app -->
+<!-- redo readme -->
 
 # Unit 12 MySQL Homework: Employee Tracker
 
