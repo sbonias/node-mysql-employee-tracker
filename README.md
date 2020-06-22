@@ -25,6 +25,7 @@
 
 - [Description](#description)
 - [Deployed Application](#deployed-application)
+- [Challenges](#challenges)
 - [Visual Presentation](#visual-presentation)
 - [Installation Requirements](#installation-requirements)
 - [Usage](#usage)
@@ -38,6 +39,11 @@ A content management system geared towards allowing the user to view and interac
 ## Deployed Application
 
 - [The URL of the GitHub repository](https://drive.google.com/file/d/1iWSKUtxTX6VH2okF5GXdXJbZK7yKNll4/view)
+
+## Challenges
+
+- Was unable to display the manager name under the view all employee data function due to mysql query constraints
+- Will need to allocate more time in figuring out a solution for this
 
 ## Visual Presentation
 
